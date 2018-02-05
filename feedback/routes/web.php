@@ -12,5 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('top');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('foo', function() {
+    return 'Foo!';
+});
+
+Route::get('foo/foo1', 'FooController@foo1');
+
+Route::get('foo/foo2', 'FooController@foo2');
+
+ROute::get('foo/foo3', 'FooController@foo3');
+
+Route::get('foo/foo4', 'FooController@foo4');
