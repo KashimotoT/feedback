@@ -63,9 +63,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        //go to form page
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
@@ -75,9 +76,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        //update information
+        $user->name = $request->name;
+        $user->save();
+        return redirect('users/'.$user->id);
     }
 
     /**
@@ -86,8 +90,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect('users');
     }
 }
