@@ -23,6 +23,8 @@ Route::get('foo', function() {
     return 'Foo!';
 });
 
+Route::resource('users', 'UserController');
+
 Route::get('foo/foo1', 'FooController@foo1');
 
 Route::get('foo/foo2', 'FooController@foo2');
