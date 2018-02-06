@@ -25,7 +25,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        //go to form page
+        return view('users.create');
     }
 
     /**
@@ -36,7 +37,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //add user
+        $user =new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->save();
+        return redirect('users/'.$user->id);
     }
 
     /**
@@ -45,9 +52,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('users.show', ['user' => $user]);
     }
 
     /**
