@@ -25,10 +25,4 @@ Route::get('foo', function() {
 
 Route::resource('users', 'UserController');
 
-Route::get('foo/foo1', 'FooController@foo1');
-
-Route::get('foo/foo2', 'FooController@foo2');
-
-ROute::get('foo/foo3', 'FooController@foo3');
-
-Route::get('foo/foo4', 'FooController@foo4');
+Route::resource('works', 'WorkController');
