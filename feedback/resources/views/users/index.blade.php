@@ -3,7 +3,7 @@
 @section('content')
 <h1>登録作家一覧</h1>
 <div class="table-responsive">
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>{{ __('ID') }}</th>
