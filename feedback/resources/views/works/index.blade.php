@@ -25,7 +25,7 @@
                         {{ $work->created_at }}
                     </td>
                     <td>
-                        {{ $work->ypdated_at }}
+                        {{ $work->updated_at }}
                     </td>
                 </tr>
             @endforeach
