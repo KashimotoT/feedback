@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController');
 
 Route::resource('works', 'WorkController');
+
+Route::resource('feedback', 'FeedbackController');
