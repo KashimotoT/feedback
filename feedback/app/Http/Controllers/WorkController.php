@@ -26,7 +26,8 @@ class WorkController extends Controller
      */
     public function create()
     {
-        //
+        //go to form page
+        return view('works.create');
     }
 
     /**
@@ -37,7 +38,12 @@ class WorkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //add work
+        $work = new Work;
+        $work->author = $request->author;
+        $work->title   = $request->title;
+        $work->save();
+        return redirect('works/'.$work->id);
     }
 
     /**
@@ -46,9 +52,10 @@ class WorkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Work $work)
     {
-        //
+        //show further information
+        return  view('works.show', ['work' => $work]);
     }
 
     /**
