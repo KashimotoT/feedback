@@ -64,9 +64,10 @@ class WorkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Work $work)
     {
-        //
+        //go to form page
+        return view('works.edit', ['work' => $work]);
     }
 
     /**
@@ -76,9 +77,13 @@ class WorkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Work $work)
     {
-        //
+        //update information of work
+        $work->author = $request->author;
+        $work->title = $request->title;
+        $work->save();
+        return redirect('works/'.$work->id);
     }
 
     /**
@@ -89,6 +94,6 @@ class WorkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
