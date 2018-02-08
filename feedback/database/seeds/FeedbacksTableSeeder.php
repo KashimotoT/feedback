@@ -16,7 +16,7 @@ class FeedbacksTableSeeder extends Seeder
         for ($i = 1; $i < 11; $i++) {
             DB::table('feedbacks')->insert([
                 'title'      => $faker->word(),
-                'feedbacks'  => $faker->realText(),
+                'content'  => $faker->realText(),
                 'created_at' => $faker->dateTimeThisYear($max = 'now', $timezone = 'Asia/Tokyo'),
                 'updated_at' => $faker->dateTimeThisYear($max = 'now', $timezone = 'Asia/Tokyo'),
             ]);
