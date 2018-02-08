@@ -92,8 +92,9 @@ class WorkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Work $work)
     {
-        
+        $work->delete();
+        return redirect('works');
     }
 }
