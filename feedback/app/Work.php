@@ -12,6 +12,6 @@ class Work extends Model
 
     //感想を新しい順に取得
     public function feedback() {
-         return $this->hadMany('App\Feedback')->latest();
+         return $this->hasMany('App\Feedback')->latest();
     }
 }
