@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    //作品を新しい順で取得する
+    public function work() {
+        return $this->hasMany('App\Work')->latest();
+    }
 }
