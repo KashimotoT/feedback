@@ -16,7 +16,8 @@
             @foreach ($works as $work)
                 <tr>
                     <td>
-                        {{ $work->author }}
+                        <a href="{{ url('users/'.$work->user->id )}}">
+                            {{ $work->user->name }}</a>
                     </td>
                     <td>
                         <a href="{{ url('works/'.$work->id) }}">{{ $work->title }}</a>
