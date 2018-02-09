@@ -15,7 +15,10 @@ class CreateFeedbackTable extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->integer('work_id')->unsigned()->default(1);
+            $table->foreign('work_id')
+                ->references('id')->on('works')
+                ->onDelete('cascade');
             $table->text('content');
             $table->timestamps();
         });

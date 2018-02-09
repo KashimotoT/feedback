@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     //作品を新しい順で取得する
-    public function work() {
+    public function works() {
         return $this->hasMany('App\Work')->latest();
     }
 }

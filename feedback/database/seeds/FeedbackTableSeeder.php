@@ -15,7 +15,7 @@ class FeedbackTableSeeder extends Seeder
         $faker = Faker::create('ja_JP');
         for ($i = 1; $i < 11; $i++) {
             DB::table('feedback')->insert([
-                'title'      => $faker->word(),
+                'work_id'      => $faker->numberBetween(1, 10),
                 'content'  => $faker->realText(),
                 'created_at' => $faker->dateTimeThisYear($max = 'now', $timezone = 'Asia/Tokyo'),
                 'updated_at' => $faker->dateTimeThisYear($max = 'now', $timezone = 'Asia/Tokyo'),
