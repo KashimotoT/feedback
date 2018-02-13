@@ -10,7 +10,7 @@
 <div>
     <a href="{{ url('users/'.$user->id.'/edit') }}" class="btn btn-primary">編集</a>
     @component('components.btn-del')
-        @slot('table', 'users')
+        @slot('controller', 'users')
         @slot('id', $user->id)
     @endcomponent
 </div>
@@ -38,7 +38,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach ($user->work as $work)
+        @foreach ($user->works as $work)
             <tr>
                 <td>
                     <a href="{{ url('works/'.$work->id) }}">
@@ -49,7 +49,7 @@
                 <td nowrap>
                     <a href="{{ url('works/'.$work->id.'/edit') }}" class="btn btn-primary">編集</a>
                     @component('components.btn-del')
-                        @slot('table', 'works')
+                        @slot('controller', 'works')
                         @slot('id', $work->id)
                     @endcomponent
                 </td>

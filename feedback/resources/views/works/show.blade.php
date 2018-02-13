@@ -10,7 +10,7 @@
 <div>
     <a href="{{ url('works/'.$work->id.'/edit') }}" class="btn btn-primary">編集</a>
     @component('components.btn-del')
-        @slot('table', 'works')
+        @slot('controller', 'works')
         @slot('id', $work->id)
     @endcomponent
 </div>
@@ -46,7 +46,7 @@
                 <td nowrap>{{ $feedback->created_at }}</td>
                 <td>
                     @component('components.btn-del')
-                        @slot('table', 'feedback')
+                        @slot('controller', 'feedback')
                         @slot('id', $feedback->id)
                     @endcomponent
                 </td>
