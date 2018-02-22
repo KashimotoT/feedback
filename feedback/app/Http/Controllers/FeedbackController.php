@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Feedback;
+use App\User;
+use App\Work;
 
 class FeedbackController extends Controller
 {
@@ -24,8 +26,17 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        //go to form page
-        return view('feedback.create');
+        //fetch authors
+        $authors = User::all();
+        //fetc book titles
+        $titles = Work::all();
+
+
+        //show the page
+        return view('feedback.create', [
+            'authors' => $authors,
+            'titles' => $titles
+        ]);
     }
 
     /**
@@ -38,7 +49,7 @@ class FeedbackController extends Controller
     {
         //add content
         $feedback = new Feedback;
-        $feedback->title = $request->title;
+        $feedback->work_id = $request->title;
         $feedback->content = $request->content;
         $feedback->save();
         return redirect('/');
