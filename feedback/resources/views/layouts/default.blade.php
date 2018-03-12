@@ -13,35 +13,30 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <!-- サービス名 -->
-            <a class="navbar-brand" href="{{ url('/home') }}">{{ config('app.name', 'Laravel') }}</a>
+            <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
 
             <!-- モバイル時のメニューボタン -->
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- ログアウト時のメニュー -->
-            @guest
-                <nav class="navbar navbar-light bg-light">
-                    <a class="btn btn-primary" href="{{ url('login') }}" role="button">{{ __('Login') }}</a>
-                </nav>
-            @endguest
             <!-- ログイン時のメニュー -->
-            @auth
                 <div class="collapse navbar-collapse" id="Navber">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('works') }}">{{ __('Works') }}</a>
+                            <a class="nav-link" href="{{ url('works') }}">{{ '作品一覧' }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('users') }}">{{ __('Users') }}</a>
+                            <a class="nav-link" href="{{ url('users') }}">{{ '著者一覧' }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}">{{ __('Logout') }}</a>
+                        <li>
+                            <a class="nav-link" href="{{ url('feedback/create') }}">{{ '感想投稿' }}</a>
+                        </li>
+                                {{ csrf_field() }}
+                            </form>
                         </li>
                     </ul>
                 </div>
-            @endauth
         </nav>
 
         <!-- 個別ページの内容 -->

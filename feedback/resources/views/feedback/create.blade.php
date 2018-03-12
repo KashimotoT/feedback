@@ -1,13 +1,18 @@
 @extends('layouts.default')
 
 @section('content')
-<h1>新規登録</h1>
+<h1>感想</h1>
 <form action="{{ url('feedback') }}" method="post">
     {{ csrf_field() }}
     {{ method_field('POST')}}
     <div class="form-group">
         <label for="title">タイトル</label>
-        <input id="title" type="text" name="title" class="form-control" required autofocus>
+        <select id="title" class="custom-select" name="work" required autofocus>
+            <option selected>作品を選んでください</option>
+            @foreach ($bookLists as $bookList)
+            <option value="{{ $bookList->id }}">{{ $bookList->title }}</option>
+            @endforeach
+        </select>
     </div>
     <div class="form-group">
         <label for="content">感想</label>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Work;
+use App\User;
 
 class WorkController extends Controller
 {
@@ -26,8 +27,10 @@ class WorkController extends Controller
      */
     public function create()
     {
+        //fetch author list
+        $users = User::all();
         //go to form page
-        return view('works.create');
+        return view('works.create', ['users' => $users]);
     }
 
     /**
@@ -38,12 +41,12 @@ class WorkController extends Controller
      */
     public function store(Request $request)
     {
-        //add work
-        $work = new Work;
-        $work->author = $request->author;
-        $work->title   = $request->title;
-        $work->save();
-        return redirect('works/'.$work->id);
+        //add book
+        $book = new Work;
+        $book->user_id = $request->author;
+        $book->title   = $request->title;
+        $book->save();
+        return redirect('works/'.$book->id);
     }
 
     /**
@@ -66,8 +69,10 @@ class WorkController extends Controller
      */
     public function edit(Work $work)
     {
+        //fetch author list
+        $authors = User::all();
         //go to form page
-        return view('works.edit', ['work' => $work]);
+        return view('works.edit', ['work' => $work, 'authors' => $authors]);
     }
 
     /**
@@ -77,10 +82,10 @@ class WorkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Work $work)
+    public function update(Request $request, Work $work, User $user)
     {
         //update information of work
-        $work->author = $request->author;
+        $work->user_id = $request->author;
         $work->title = $request->title;
         $work->save();
         return redirect('works/'.$work->id);
@@ -97,4 +102,5 @@ class WorkController extends Controller
         $work->delete();
         return redirect('works');
     }
+
 }

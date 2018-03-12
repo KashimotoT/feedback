@@ -43,7 +43,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->save();
-        return redirect('users/'.$user->id);
+        return redirect('users');
     }
 
     /**
@@ -95,4 +95,9 @@ class UserController extends Controller
         $user->delete();
         return redirect('users');
     }
+
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->except(['index', 'show']);
+    // }
 }
