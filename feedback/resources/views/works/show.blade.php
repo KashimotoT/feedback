@@ -38,6 +38,12 @@
             <tr>
                 <td>{{ $feedback->content }}</td>
                 <td nowrap>{{ $feedback->created_at }}</td>
+                <td>
+                    @component('components.btn-del')
+                        @slot('controller', 'feedback')
+                        @slot('id', $feedback->id)
+                    @endcomponent
+                </td>
             </tr>
         @endforeach
         </tbody>
